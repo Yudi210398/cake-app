@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cake {
+  id          Int      @id @default(autoincrement())
+  quantity    Int      @db.Integer
+  nameCake    String   @db.VarChar(100)
+  price       Int      @db.Integer
+  image       String   @db.Text
+  description String   @db.Text
+  category    Category
+  create_at   DateTime @default(now())
+
+  @@map("cake")
+}
+
+enum Category {
+  KUE_KERING
+  KUE_BASAH
+}
