@@ -13,6 +13,10 @@ export class ValidasiCake {
   @IsNotEmpty({ message: 'Tidak Boleh kosong' })
   quantity: number;
 
+  @IsNumber({}, { message: 'harus berupa angka' })
+  @IsNotEmpty({ message: 'Tidak Boleh kosong' })
+  price: number;
+
   @IsNotEmpty({ message: 'Tidak Boleh kosong' })
   image: string;
 
