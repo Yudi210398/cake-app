@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 
 enum Category {
   kering = 'KUE_KERING',
@@ -6,23 +6,18 @@ enum Category {
 }
 
 export class ValidasiCake {
-  @IsNotEmpty({ message: 'Tidak Boleh kosong' })
+  @IsNotEmpty({ message: 'Tidak Boleh kosong nama' })
   namaCake: string;
 
-  @IsNumber({}, { message: 'harus berupa angka' })
-  @IsNotEmpty({ message: 'Tidak Boleh kosong' })
+  @IsNotEmpty({ message: 'Tidak Boleh kosong,' })
   quantity: number;
 
-  @IsNumber({}, { message: 'harus berupa angka' })
   @IsNotEmpty({ message: 'Tidak Boleh kosong' })
   price: number;
 
-  @IsNotEmpty({ message: 'Tidak Boleh kosong' })
-  image: string;
-
-  @IsNotEmpty({ message: 'Tidak Boleh kosong' })
+  @IsNotEmpty({ message: 'Tidak Boleh kosong description' })
   description: string;
 
-  @IsNotEmpty({ message: 'Tidak Boleh kosong' })
+  @IsNotEmpty({ message: 'Tidak Boleh kosong category' })
   category: Category;
 }
