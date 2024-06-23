@@ -4,7 +4,9 @@ import {
   Get,
   HttpException,
   HttpStatus,
+  Param,
   ParseFilePipe,
+  ParseIntPipe,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -41,5 +43,10 @@ export class CakeController {
     if ((await this.serviceCake.getKue()).length === 0)
       throw new HttpException('Data tidak ada', HttpStatus.FORBIDDEN);
     return await this.serviceCake.getKue();
+  }
+
+  @Get('/detail/:id')
+  idCake(@Param('id', ParseIntPipe) id: number) {
+    return this.serviceCake.getIdCake(id);
   }
 }

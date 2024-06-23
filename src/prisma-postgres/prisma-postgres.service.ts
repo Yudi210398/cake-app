@@ -6,6 +6,9 @@ export class PrismaPostgresService
   extends PrismaClient
   implements OnModuleInit
 {
+  constructor() {
+    super({ errorFormat: 'pretty', log: ['error', 'info', 'warn', 'query'] });
+  }
   async onModuleInit() {
     await this.$connect()
       .then(() => console.log(`konek database`))

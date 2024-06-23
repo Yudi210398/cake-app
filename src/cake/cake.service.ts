@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { PrismaPostgresService } from 'src/prisma-postgres/prisma-postgres.service';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 import { ValidasiCake } from 'src/dto/cakeValidasi';
-import { PrismaPostgresService } from 'src/prisma-postgres/prisma-postgres.service';
 
 @Injectable()
 export class CakeService {
@@ -32,5 +32,13 @@ export class CakeService {
 
   async getKue() {
     return await this.prismaService.cake.findMany({});
+  }
+
+  async getIdCake(id: number) {
+    const datas = await this.prismaService.cake.findUnique({
+      where: { id },
+    });
+    if (!datas) throw new HttpException('Data tidak ada', HttpStatus.FORBIDDEN);
+    return datas;
   }
 }

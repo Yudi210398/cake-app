@@ -2,4 +2,4 @@ SELECT * FROM cake;
 
 
 DELETE from cake 
-WHERE id = 2;
+WHERE id = 2; 
