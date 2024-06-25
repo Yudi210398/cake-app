@@ -34,6 +34,12 @@ export class CakeService {
     return await this.prismaService.cake.findMany({});
   }
 
+  async getKuetrue() {
+    return await this.prismaService.cake.findMany({
+      where: { utama: true },
+    });
+  }
+
   async getIdCake(id: number) {
     const datas = await this.prismaService.cake.findUnique({
       where: { id },

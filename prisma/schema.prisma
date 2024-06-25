@@ -22,6 +22,7 @@ model Cake {
   description String   @db.Text
   category    Category
   create_at   DateTime @default(now())
+  utama       Boolean  @default(false)
 
   @@map("cake")
 }

@@ -45,6 +45,13 @@ export class CakeController {
     return await this.serviceCake.getKue();
   }
 
+  @Get('kuetrue')
+  async getDatatrue() {
+    if ((await this.serviceCake.getKuetrue()).length === 0)
+      throw new HttpException('Data tidak ada', HttpStatus.FORBIDDEN);
+    return await this.serviceCake.getKuetrue();
+  }
+
   @Get('/detail/:id')
   idCake(@Param('id', ParseIntPipe) id: number) {
     return this.serviceCake.getIdCake(id);
